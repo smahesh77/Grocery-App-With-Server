@@ -1,6 +1,9 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose
 
+const db = require('../config/db')
+
+
 const catagorySchema = new Schema({
     categoryName: {
         type: String,
@@ -17,6 +20,6 @@ const catagorySchema = new Schema({
     },
 })
 
-const catModel = mongoose.model("category", catagorySchema)
+const catModel = db.model("category", catagorySchema)
 
 module.exports = catModel

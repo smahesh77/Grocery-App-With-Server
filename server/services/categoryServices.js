@@ -2,7 +2,9 @@ const { response } = require('express')
 const catagory = require('../models/categoryModel')
 const { Mongo_config } = require('../config/app.config')
 
-async function createCatagory(params, callback) {
+class catagoryServives {
+    
+static async createCatagory(params, callback) {
     if(!params.categoryName){
         return callback({
             message: "Category Name is Required"
@@ -19,7 +21,7 @@ async function createCatagory(params, callback) {
             })
 }
 
-async function getCatagory(params, callback) {
+static async getCatagory(params, callback) {
     const catname = params.categoryName
     var condition = categoryName ?{
         categoryName: {$regex: new RegExp(catname), $options: "i"},
@@ -40,7 +42,7 @@ async function getCatagory(params, callback) {
 
 }    
 
-async function getCatagoryById(params, callback) {
+static async  getCatagoryById(params, callback) {
     const catid = params.categoryId
     
 
@@ -55,7 +57,7 @@ async function getCatagoryById(params, callback) {
 
 }    
 
-async function updateCatagory(params, callback) {
+static async updateCatagory(params, callback) {
     const catid = params.categoryId
     
 
@@ -71,7 +73,7 @@ async function updateCatagory(params, callback) {
 }    
 
 
-async function deleteCatagory(params, callback) {
+static async deleteCatagory(params, callback) {
     const catid = params.categoryId
     
 
@@ -85,3 +87,6 @@ async function deleteCatagory(params, callback) {
     })
 
 }   
+}
+
+module.exports = catagoryServives
